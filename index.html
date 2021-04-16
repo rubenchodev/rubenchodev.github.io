@@ -69,14 +69,19 @@
       
     }
    
-    function iOSversion1() {
-      if (/iP(hone|od|ad)/.test(navigator.platform)) {
-        // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
-        var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-        return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
-      }
+    function iOS_version() { 
+        if(navigator.userAgent.match(/ipad|iphone|ipod/i)){ //if the current device is an iDevice
+        var ios_info ={};
+        ios_info.User_Agent=navigator.userAgent;
+        ios_info.As_Reported=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0];
+        ios_info.Major_Release=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].split('_')[0];
+        ios_info.Full_Release=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].replace(/_/g,".");
+        ios_info.Major_Release_Numeric=+(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].split('_')[0].replace("OS ","");
+        ios_info.Full_Release_Numeric=+(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].replace("_",".").replace("_","").replace("OS ","");   //converts versions like 4.3.3 to numeric value 4.33 for ease of numeric comparisons
+        return(ios_info);
+        }
     }
-     alert("Versiones: " + iOSversion1())
+     alert("Versiones: " + JSON.stringify(iOS_version))
     function iOSversion() {
 
     if (iOS) { // <-- Use the one here above
