@@ -60,8 +60,11 @@
       // Se referencia el iframe
       var mainIframe = document.querySelector("#contentScriptIframe");
       
+      // obtenemos la versión 
+      var iOSVersion = iOS_version();
+      
       // valdiamos si no es un iOS
-      if(iOS() == false){
+      if(!iOSVersion.Full_Release_Numeric || (iOSVersion.Full_Release_Numeric && Number(iOSVersion.Full_Release_Numeric) > 12.5)){
       
         // obtenemos la altura de la ventana
         mainIframe.style.height = (getWindowHeight()) + "px";
@@ -69,32 +72,19 @@
       
     }
    
-    function iOS_version() { 
-        if(navigator.userAgent.match(/ipad|iphone|ipod/i)){ //if the current device is an iDevice
-        var ios_info ={};
-        ios_info.User_Agent=navigator.userAgent;
-        ios_info.As_Reported=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0];
-        ios_info.Major_Release=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].split('_')[0];
-        ios_info.Full_Release=(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].replace(/_/g,".");
+    function iOS_version() {
+      // objeto a retornar
+      var ios_info ={};
+      
+      // se valida si es un iphone
+      if(navigator.userAgent.match(/ipad|iphone|ipod/i)){ //if the current device is an iDevice
         ios_info.Major_Release_Numeric=+(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].split('_')[0].replace("OS ","");
         ios_info.Full_Release_Numeric=+(navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].replace("_",".").replace("_","").replace("OS ","");   //converts versions like 4.3.3 to numeric value 4.33 for ease of numeric comparisons
-        return(ios_info);
-        }
+      }
+      
+      // validamos si existe la propiedad de la versión
+      return(ios_info);
     }
-     alert("Versiones: " + JSON.stringify(iOS_version()))
-    function iOSversion() {
-
-    if (iOS) { // <-- Use the one here above
-      if (window.indexedDB) { return 'iOS 8 and up'; }
-      if (window.SpeechSynthesisUtterance) { return 'iOS 7'; }
-      if (window.webkitAudioContext) { return 'iOS 6'; }
-      if (window.matchMedia) { return 'iOS 5'; }
-      if (window.history && 'pushState' in window.history) { return 'iOS 4'; }
-      return 'iOS 3 or earlier';
-    }
-
-    return 'Not an iOS device';
-  }
     
     /**
      * permite determinar si es un dispositivo iOS
