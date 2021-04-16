@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afiliado - Portal de citas</title>
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <!-- Agrgamos el favicon de la página-->
+  <link rel="icon" type="image/png" href="https://www.colpensiones.gov.co/info/rpm/web/portal/imagenes/favicon.ico">
+
+  <!-- Agregamos los estilos de iframe -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Hind', sans-serif;
+    }
+    
+    body {
+      overflow: hidden;
+    }
+    
+    #contentScriptIframe {
+      width: 100%;
+      border: none;
+      width: 1px;
+      min-width: 100%;
+      *width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Iframe donde contendra el script -->
+  <iframe allowfullscreen sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation allow-top-navigation allow-same-origin" seamless="seamless" scrolling="no"
+    src="https://script.google.com/macros/s/AKfycbxcutlK-1o-r17Ic1IQd-RQAm8Ww1l-x87qM_2BIaio0AL6tCg/exec" scrolling="no" id="contentScriptIframe"></iframe>
+
+  <script>
+    // Se define el tamaño inicial
+    reportWindowSize();
+
+    // Agregamos el evento que redimenciona el iframe
+    window.onresize = reportWindowSize;
+
+    /**
+     * Permite ajustar el año del iframe principal
+     */
+    function reportWindowSize() {
+
+      // Se referencia el iframe
+      var mainIframe = document.querySelector("#contentScriptIframe");
+
+      // obtenemos la altura de la ventana
+      mainIframe.style.height = (getWindowHeight()) + "px";
+    }
+
+    /**
+     * Permite obtener la altura actual
+     */
+    function getWindowHeight() {
+
+      // variable para obtener el tamaño actual
+      var currHeight = 0;
+
+      if (typeof window.innerHeight != 'undefined') {
+
+        // se toma el tamaño de la ventana
+        currHeight = window.innerHeight;
+      } else if (typeof document.documentElement != 'undefined' && typeof document.documentElement.clientHeight != 'undefined' && document.documentElement.clientHeight != 0) {
+
+        // se toma el tamaño de la ventana con base al documento
+        currHeight = document.documentElement.clientHeight;
+      } else {
+
+        // se toma el tamaño de la ventana con base al cuerpo
+        currHeight = document.getElementsByTagName('body')[0].clientHeight;
+      }
+
+      // se retorna la altura
+      return currHeight;
+    }
+  </script>
+</body>
+
+</html>
