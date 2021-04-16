@@ -68,7 +68,15 @@
       }
       
     }
-    alert("Versiones: " + navigator.platform)
+   
+    
+    var res = navigator.userAgent.match(/; CPU.*OS (\d_\d)/);
+    if(res) {
+        var strVer = res[res.length-1];
+        strVer = strVer.replace("_", ".");
+        version = strVer * 1;
+       alert("Versiones: " + version)
+    }
     function iOSversion() {
 
     if (iOS) { // <-- Use the one here above
