@@ -32,13 +32,17 @@
       min-width: 100%;
       *width: 100%;
       -webkit-overflow-scrolling: touch;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
     }
   </style>
 </head>
 
 <body>
   <!-- Iframe donde contendra el script -->
-  <iframe allowfullscreen sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation allow-top-navigation allow-same-origin" seamless="seamless" scrolling="no"
+  <iframe allowfullscreen allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; web-share *; vibrate *; vr *" sandbox="allow-downloads allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation" seamless="seamless"
     src="https://script.google.com/macros/s/AKfycbxcutlK-1o-r17Ic1IQd-RQAm8Ww1l-x87qM_2BIaio0AL6tCg/exec" id="contentScriptIframe"></iframe>
 
   <script>
