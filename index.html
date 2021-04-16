@@ -62,7 +62,10 @@
 
       // obtenemos la altura de la ventana
       //mainIframe.style.height = (getWindowHeight()) + "px";
-      document.createElement("P").innerHTML = 'OK: ' + getWindowHeight()
+      var doc = document.body;
+      var p = document.createElement("P");
+      doc.appendChild(p)
+      p.innerHTML = 'OK: ' + getWindowHeight()
     }
 
     /**
