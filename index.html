@@ -18,10 +18,11 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Hind', sans-serif;
+      
     }
     
     body {
-      overflow: hidden;
+      /*overflow: hidden;*/
     }
     
     #contentScriptIframe {
@@ -30,6 +31,7 @@
       width: 1px;
       min-width: 100%;
       *width: 100%;
+      -webkit-overflow-scrolling: touch;
     }
   </style>
 </head>
@@ -37,7 +39,7 @@
 <body>
   <!-- Iframe donde contendra el script -->
   <iframe allowfullscreen sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-top-navigation-by-user-activation allow-top-navigation allow-same-origin" seamless="seamless" scrolling="no"
-    src="https://script.google.com/macros/s/AKfycbxcutlK-1o-r17Ic1IQd-RQAm8Ww1l-x87qM_2BIaio0AL6tCg/exec" scrolling="no" id="contentScriptIframe"></iframe>
+    src="https://script.google.com/macros/s/AKfycbxcutlK-1o-r17Ic1IQd-RQAm8Ww1l-x87qM_2BIaio0AL6tCg/exec" id="contentScriptIframe"></iframe>
 
   <script>
     // Se define el tamaño inicial
