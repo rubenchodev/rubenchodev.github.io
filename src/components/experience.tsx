@@ -65,15 +65,15 @@ export function Experience() {
                     }}
                   />
 
-                  {job.skills?.length > 0 && (
+                  {job.skills?.length ? (
                     <div className="flex flex-wrap gap-2">
-                      {job.skills.map((skill) => (
+                      {job.skills?.map((skill) => (
                         <Badge key={skill} variant="secondary" className="text-xs">
                           {skill}
                         </Badge>
                       ))}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               ))}
             </div>

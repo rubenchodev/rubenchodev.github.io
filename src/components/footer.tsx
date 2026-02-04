@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 
 const socialLinks = [
   { title: "Perfil de GitHub", name: "GitHub", href: "https://github.com/rubenchodev", icon: Github },

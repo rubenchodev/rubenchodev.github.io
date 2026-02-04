@@ -1,13 +1,20 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import type { WorkExperience, Education } from "@/types/experience"
 
 const BASE_URL =
   "https://script.google.com/macros/s/AKfycbxaPxwBxbbihaXMUtR5A6tFIJoUYQxh89ojpXgyAwx7KF6_ipt25EnNsdykslz2OOcchQ/exec"
 
-export function useExperienceData() {
-  const [workExperience, setWorkExperience] = useState([])
-  const [education, setEducation] = useState([])
+type ExperienceData = {
+  workExperience: WorkExperience[]
+  education: Education[]
+  loading: boolean
+}
+
+export function useExperienceData(): ExperienceData {
+  const [workExperience, setWorkExperience] = useState<WorkExperience[]>([])
+  const [education, setEducation] = useState<Education[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
